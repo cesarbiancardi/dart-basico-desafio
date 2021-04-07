@@ -1,0 +1,46 @@
+void main(List<String> args) {
+  var pacientes = [
+    'Rodrigo Rahman|35|Masculino',
+    'Jose|56|Masculino',
+    'Joaquim|84|Masculino',
+    'Rodrigo Rahman|35|Masculino',
+    'Maria|88|Feminino',
+    'Helena|24|Feminino',
+    'Leonardo|5|Masculino',
+    'Laura Maria|29|Feminino',
+    'Joaquim|72|Masculino',
+    'Helena|24|Feminino',
+    'Guilherme|15|Masculino',
+    'Manuela|85|Masculino',
+    'Leonardo|5|Masculino',
+    'Helena|24|Feminino',
+    'Laura|29|Feminino'
+  ];
+  print('Removendo duplicados ...');
+  var clrPacientes = pacientes.toSet().toList();
+  var linha;
+  var masculino = 0;
+  var feminino = 0;
+  var idademaisvelha = 0;
+  var pessoamaisvelha;
+  var maior18 = 0;
+  for (var i = 0; i < clrPacientes.length; i++) {
+    linha = clrPacientes[i].split('|');
+    if (int.parse(linha[1]) > idademaisvelha) {
+      idademaisvelha = int.parse(linha[1]);
+      pessoamaisvelha = linha[0];
+    }
+    if (linha[2] == 'Masculino') {
+      masculino++;
+    } else {
+      feminino++;
+    }
+    if (int.parse(linha[1]) > 18) {
+      maior18++;
+    }
+  }
+  print('Sexo Masculino: ${masculino} ');
+  print('Sexo Feminino: ${feminino}');
+  print('Maior de 18: ${maior18}');
+  print('Pessoa mais velha: ${pessoamaisvelha} com ${idademaisvelha} anos');
+}
