@@ -24,6 +24,7 @@ void main(List<String> args) {
   var idademaisvelha = 0;
   var pessoamaisvelha;
   var maior18 = 0;
+  var listaoff = [];
   for (var i = 0; i < clrPacientes.length; i++) {
     linha = clrPacientes[i].split('|');
     if (int.parse(linha[1]) > idademaisvelha) {
@@ -37,8 +38,15 @@ void main(List<String> args) {
     }
     if (int.parse(linha[1]) > 18) {
       maior18++;
+    } else {
+      listaoff.add(clrPacientes[i]);
     }
   }
+
+  var pacientesSet = Set.from(pacientes);
+  var listaoffSet = Set.from(listaoff);
+  print(List.from(pacientesSet.difference(listaoffSet)));
+
   print('Sexo Masculino: ${masculino} ');
   print('Sexo Feminino: ${feminino}');
   print('Maior de 18: ${maior18}');
